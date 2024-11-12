@@ -1,0 +1,35 @@
+                                                        Part 2
+# Create the outer list for all devices
+devices_list = []
+
+# Read in the devices from the file
+file = open('devices-07.txt', 'r')
+for line in file:
+device_info_list = line.split(',') # Get device info into list
+devices_list.append(device_info_list)
+
+# Display heading
+print('')
+print('Name OS-type IP address Software ')
+print('------- --------- ------------------- --------------------')
+
+# Create unordered collection with no duplicate elements
+ip_addresses = set()
+
+# Go through the list of devices, displaying values in nice format
+for device in devices_list:
+print('{0:8} {1:10} {2:20} {3:20}'.format(device[0], device[1],
+device[2], device[3]),
+end=' ')
+# Display 'duplicate' if IP address exists for another device
+if device[2] in ip_addresses:
+print('*Duplicate IP!*')
+continue
+ip_addresses.add(device[2])
+# Return to a new line
+print('')
+# Display a blank line to make easier to read
+print('')
+
+# Close the file
+file.close()
